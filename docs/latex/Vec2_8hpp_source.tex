@@ -1,0 +1,53 @@
+\hypertarget{Vec2_8hpp_source}{}\doxysection{Vec2.\+hpp}
+\label{Vec2_8hpp_source}\index{Source/Math/Vec2.hpp@{Source/Math/Vec2.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{class }\mbox{\hyperlink{classVec2}{Vec2}}}
+\DoxyCodeLine{5 \{}
+\DoxyCodeLine{6 \textcolor{keyword}{public}:}
+\DoxyCodeLine{7     \mbox{\hyperlink{classVec2}{Vec2}}()}
+\DoxyCodeLine{8         : x(0.0f), y(0.0f)}
+\DoxyCodeLine{9     \{\}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11     \mbox{\hyperlink{classVec2}{Vec2}}(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y)}
+\DoxyCodeLine{12         : x(x), y(y)}
+\DoxyCodeLine{13     \{\}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \mbox{\hyperlink{classVec2}{Vec2}} operator+(\mbox{\hyperlink{classVec2}{Vec2}} \textcolor{keyword}{const}\& v)}
+\DoxyCodeLine{16     \{}
+\DoxyCodeLine{17         \textcolor{keywordflow}{return} \mbox{\hyperlink{classVec2}{Vec2}}(}
+\DoxyCodeLine{18             x + v.x,}
+\DoxyCodeLine{19             y + v.y);}
+\DoxyCodeLine{20     \}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \mbox{\hyperlink{classVec2}{Vec2}} operator+=(\mbox{\hyperlink{classVec2}{Vec2}} \textcolor{keyword}{const}\& v)}
+\DoxyCodeLine{23     \{}
+\DoxyCodeLine{24         x += v.x;}
+\DoxyCodeLine{25         y += v.y;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{28     \}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \mbox{\hyperlink{classVec2}{Vec2}} operator-\/(\mbox{\hyperlink{classVec2}{Vec2}} \textcolor{keyword}{const}\& v)}
+\DoxyCodeLine{31     \{}
+\DoxyCodeLine{32         \textcolor{keywordflow}{return} \mbox{\hyperlink{classVec2}{Vec2}}(}
+\DoxyCodeLine{33             x -\/ v.x,}
+\DoxyCodeLine{34             y -\/ v.y);}
+\DoxyCodeLine{35     \}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \mbox{\hyperlink{classVec2}{Vec2}} operator-\/=(\mbox{\hyperlink{classVec2}{Vec2}} \textcolor{keyword}{const}\& v)}
+\DoxyCodeLine{38     \{}
+\DoxyCodeLine{39         x -\/= v.x;}
+\DoxyCodeLine{40         y -\/= v.y;}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{43     \}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keywordtype}{float} x, y;}
+\DoxyCodeLine{47 \};}
+
+\end{DoxyCode}

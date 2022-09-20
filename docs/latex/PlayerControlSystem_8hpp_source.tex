@@ -1,0 +1,26 @@
+\hypertarget{PlayerControlSystem_8hpp_source}{}\doxysection{Player\+Control\+System.\+hpp}
+\label{PlayerControlSystem_8hpp_source}\index{Source/Systems/PlayerControlSystem.hpp@{Source/Systems/PlayerControlSystem.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}Core/System.hpp"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{classEvent}{Event}};}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{classPlayerControlSystem}{PlayerControlSystem}} : \textcolor{keyword}{public} \mbox{\hyperlink{classSystem}{System}}}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11 \textcolor{keyword}{public}:}
+\DoxyCodeLine{12     \textcolor{keywordtype}{void} Init();}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keywordtype}{void} Update(\textcolor{keywordtype}{float} dt);}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{private}:}
+\DoxyCodeLine{17     std::bitset<8> mButtons;}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} InputListener(\mbox{\hyperlink{classEvent}{Event}}\& event);}
+\DoxyCodeLine{20 \};}
+
+\end{DoxyCode}

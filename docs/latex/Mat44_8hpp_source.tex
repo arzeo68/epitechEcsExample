@@ -1,0 +1,59 @@
+\hypertarget{Mat44_8hpp_source}{}\doxysection{Mat44.\+hpp}
+\label{Mat44_8hpp_source}\index{Source/Math/Mat44.hpp@{Source/Math/Mat44.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}Vec4.hpp"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{classMat44}{Mat44}}}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7 \textcolor{keyword}{public}:}
+\DoxyCodeLine{8     \mbox{\hyperlink{classMat44}{Mat44}}()}
+\DoxyCodeLine{9     \{}
+\DoxyCodeLine{10         \textcolor{comment}{//@formatter:off}}
+\DoxyCodeLine{11         m[0][0] = 1.0f; m[0][1] = 0.0f; m[0][2] = 0.0f; m[0][3] = 0.0f;}
+\DoxyCodeLine{12         m[1][0] = 0.0f; m[1][1] = 1.0f; m[1][2] = 0.0f; m[1][3] = 0.0f;}
+\DoxyCodeLine{13         m[2][0] = 0.0f; m[2][1] = 0.0f; m[2][2] = 1.0f; m[2][3] = 0.0f;}
+\DoxyCodeLine{14         m[3][0] = 0.0f; m[3][1] = 0.0f; m[3][2] = 0.0f; m[3][3] = 1.0f;}
+\DoxyCodeLine{15         \textcolor{comment}{//@formatter:on}}
+\DoxyCodeLine{16     \}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \mbox{\hyperlink{classMat44}{Mat44}} operator*(\mbox{\hyperlink{classMat44}{Mat44}} \textcolor{keyword}{const}\& rhs)}
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21         \mbox{\hyperlink{classMat44}{Mat44}} result;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} row = 0; row < 4; ++row)}
+\DoxyCodeLine{24         \{}
+\DoxyCodeLine{25             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} col = 0; col < 4; ++col)}
+\DoxyCodeLine{26             \{}
+\DoxyCodeLine{27                 \textcolor{keywordtype}{float} sum = 0.0f;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 4; ++i)}
+\DoxyCodeLine{30                 \{}
+\DoxyCodeLine{31                     sum += m[row][i] * rhs.m[i][col];}
+\DoxyCodeLine{32                 \}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34                 result.m[row][col] = sum;}
+\DoxyCodeLine{35             \}}
+\DoxyCodeLine{36         \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38         \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{39     \}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \mbox{\hyperlink{classVec4}{Vec4}} operator*(\mbox{\hyperlink{classVec4}{Vec4}} \textcolor{keyword}{const}\& rhs)}
+\DoxyCodeLine{43     \{}
+\DoxyCodeLine{44         \textcolor{keywordflow}{return} \mbox{\hyperlink{classVec4}{Vec4}}(}
+\DoxyCodeLine{45             (rhs.x * m[0][0]) + (rhs.y * m[0][1]) + (rhs.z * m[0][2]) + (rhs.w * m[0][3]),}
+\DoxyCodeLine{46             (rhs.x * m[1][0]) + (rhs.y * m[1][1]) + (rhs.z * m[1][2]) + (rhs.w * m[1][3]),}
+\DoxyCodeLine{47             (rhs.x * m[2][0]) + (rhs.y * m[2][1]) + (rhs.z * m[2][2]) + (rhs.w * m[2][3]),}
+\DoxyCodeLine{48             (rhs.x * m[3][0]) + (rhs.y * m[3][1]) + (rhs.z * m[3][2]) + (rhs.w * m[3][3]));}
+\DoxyCodeLine{49     \}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{keywordtype}{float} m[4][4];}
+\DoxyCodeLine{53 \};}
+
+\end{DoxyCode}

@@ -1,0 +1,34 @@
+\hypertarget{RenderSystem_8hpp_source}{}\doxysection{Render\+System.\+hpp}
+\label{RenderSystem_8hpp_source}\index{Source/Systems/RenderSystem.hpp@{Source/Systems/RenderSystem.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}Core/System.hpp"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Graphics/Shader.hpp"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{classEvent}{Event}};}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{classRenderSystem}{RenderSystem}} : \textcolor{keyword}{public} \mbox{\hyperlink{classSystem}{System}}}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14     \textcolor{keywordtype}{void} Init();}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \textcolor{keywordtype}{void} Update(\textcolor{keywordtype}{float} dt);}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{private}:}
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} WindowSizeListener(\mbox{\hyperlink{classEvent}{Event}}\& event);}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     std::unique\_ptr<Shader> shader;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     Entity mCamera;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     GLuint mVao\{\};}
+\DoxyCodeLine{26     GLuint mVboVertices\{\};}
+\DoxyCodeLine{27     GLuint mVboNormals\{\};}
+\DoxyCodeLine{28 \};}
+
+\end{DoxyCode}

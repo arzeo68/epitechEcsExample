@@ -1,0 +1,124 @@
+\hypertarget{Coordinator_8hpp_source}{}\doxysection{Coordinator.\+hpp}
+\label{Coordinator_8hpp_source}\index{Source/Core/Coordinator.hpp@{Source/Core/Coordinator.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}ComponentManager.hpp"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}EntityManager.hpp"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}EventManager.hpp"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}SystemManager.hpp"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Types.hpp"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{classCoordinator}{Coordinator}}}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14     \textcolor{keywordtype}{void} Init()}
+\DoxyCodeLine{15     \{}
+\DoxyCodeLine{16         mComponentManager = std::make\_unique<ComponentManager>();}
+\DoxyCodeLine{17         mEntityManager = std::make\_unique<EntityManager>();}
+\DoxyCodeLine{18         mEventManager = std::make\_unique<EventManager>();}
+\DoxyCodeLine{19         mSystemManager = std::make\_unique<SystemManager>();}
+\DoxyCodeLine{20     \}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{comment}{// Entity methods}}
+\DoxyCodeLine{24     Entity CreateEntity()}
+\DoxyCodeLine{25     \{}
+\DoxyCodeLine{26         \textcolor{keywordflow}{return} mEntityManager-\/>CreateEntity();}
+\DoxyCodeLine{27     \}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} DestroyEntity(Entity entity)}
+\DoxyCodeLine{30     \{}
+\DoxyCodeLine{31         mEntityManager-\/>DestroyEntity(entity);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         mComponentManager-\/>EntityDestroyed(entity);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         mSystemManager-\/>EntityDestroyed(entity);}
+\DoxyCodeLine{36     \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \textcolor{comment}{// Component methods}}
+\DoxyCodeLine{40     \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} RegisterComponent()}
+\DoxyCodeLine{42     \{}
+\DoxyCodeLine{43         mComponentManager-\/>RegisterComponent<T>();}
+\DoxyCodeLine{44     \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} AddComponent(Entity entity, T component)}
+\DoxyCodeLine{48     \{}
+\DoxyCodeLine{49         mComponentManager-\/>AddComponent<T>(entity, component);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         \textcolor{keyword}{auto} signature = mEntityManager-\/>GetSignature(entity);}
+\DoxyCodeLine{52         signature.set(mComponentManager-\/>GetComponentType<T>(), \textcolor{keyword}{true});}
+\DoxyCodeLine{53         mEntityManager-\/>SetSignature(entity, signature);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55         mSystemManager-\/>EntitySignatureChanged(entity, signature);}
+\DoxyCodeLine{56     \}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{59     \textcolor{keywordtype}{void} RemoveComponent(Entity entity)}
+\DoxyCodeLine{60     \{}
+\DoxyCodeLine{61         mComponentManager-\/>RemoveComponent<T>(entity);}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63         \textcolor{keyword}{auto} signature = mEntityManager-\/>GetSignature(entity);}
+\DoxyCodeLine{64         signature.set(mComponentManager-\/>GetComponentType<T>(), \textcolor{keyword}{false});}
+\DoxyCodeLine{65         mEntityManager-\/>SetSignature(entity, signature);}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67         mSystemManager-\/>EntitySignatureChanged(entity, signature);}
+\DoxyCodeLine{68     \}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{71     T\& GetComponent(Entity entity)}
+\DoxyCodeLine{72     \{}
+\DoxyCodeLine{73         \textcolor{keywordflow}{return} mComponentManager-\/>GetComponent<T>(entity);}
+\DoxyCodeLine{74     \}}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76     \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{77     ComponentType GetComponentType()}
+\DoxyCodeLine{78     \{}
+\DoxyCodeLine{79         \textcolor{keywordflow}{return} mComponentManager-\/>GetComponentType<T>();}
+\DoxyCodeLine{80     \}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     \textcolor{comment}{// System methods}}
+\DoxyCodeLine{84     \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{85     std::shared\_ptr<T> RegisterSystem()}
+\DoxyCodeLine{86     \{}
+\DoxyCodeLine{87         \textcolor{keywordflow}{return} mSystemManager-\/>RegisterSystem<T>();}
+\DoxyCodeLine{88     \}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{91     \textcolor{keywordtype}{void} SetSystemSignature(Signature signature)}
+\DoxyCodeLine{92     \{}
+\DoxyCodeLine{93         mSystemManager-\/>SetSignature<T>(signature);}
+\DoxyCodeLine{94     \}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     \textcolor{comment}{// Event methods}}
+\DoxyCodeLine{98     \textcolor{keywordtype}{void} AddEventListener(EventId eventId, std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classEvent}{Event}}\&)> \textcolor{keyword}{const}\& listener)}
+\DoxyCodeLine{99     \{}
+\DoxyCodeLine{100         mEventManager-\/>AddListener(eventId, listener);}
+\DoxyCodeLine{101     \}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     \textcolor{keywordtype}{void} SendEvent(\mbox{\hyperlink{classEvent}{Event}}\& event)}
+\DoxyCodeLine{104     \{}
+\DoxyCodeLine{105         mEventManager-\/>SendEvent(event);}
+\DoxyCodeLine{106     \}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108     \textcolor{keywordtype}{void} SendEvent(EventId eventId)}
+\DoxyCodeLine{109     \{}
+\DoxyCodeLine{110         mEventManager-\/>SendEvent(eventId);}
+\DoxyCodeLine{111     \}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 \textcolor{keyword}{private}:}
+\DoxyCodeLine{114     std::unique\_ptr<ComponentManager> mComponentManager;}
+\DoxyCodeLine{115     std::unique\_ptr<EntityManager> mEntityManager;}
+\DoxyCodeLine{116     std::unique\_ptr<EventManager> mEventManager;}
+\DoxyCodeLine{117     std::unique\_ptr<SystemManager> mSystemManager;}
+\DoxyCodeLine{118 \};}
+
+\end{DoxyCode}

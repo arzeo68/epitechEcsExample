@@ -1,0 +1,64 @@
+\hypertarget{EntityManager_8hpp_source}{}\doxysection{Entity\+Manager.\+hpp}
+\label{EntityManager_8hpp_source}\index{Source/Core/EntityManager.hpp@{Source/Core/EntityManager.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}Types.hpp"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <queue>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{classEntityManager}{EntityManager}}}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11 \textcolor{keyword}{public}:}
+\DoxyCodeLine{12     \mbox{\hyperlink{classEntityManager}{EntityManager}}()}
+\DoxyCodeLine{13     \{}
+\DoxyCodeLine{14         \textcolor{keywordflow}{for} (Entity entity = 0; entity < MAX\_ENTITIES; ++entity)}
+\DoxyCodeLine{15         \{}
+\DoxyCodeLine{16             mAvailableEntities.push(entity);}
+\DoxyCodeLine{17         \}}
+\DoxyCodeLine{18     \}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     Entity CreateEntity()}
+\DoxyCodeLine{21     \{}
+\DoxyCodeLine{22         assert(mLivingEntityCount < MAX\_ENTITIES \&\& \textcolor{stringliteral}{"{}Too many entities in existence."{}});}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         Entity \textcolor{keywordtype}{id} = mAvailableEntities.front();}
+\DoxyCodeLine{25         mAvailableEntities.pop();}
+\DoxyCodeLine{26         ++mLivingEntityCount;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keywordflow}{return} id;}
+\DoxyCodeLine{29     \}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} DestroyEntity(Entity entity)}
+\DoxyCodeLine{32     \{}
+\DoxyCodeLine{33         assert(entity < MAX\_ENTITIES \&\& \textcolor{stringliteral}{"{}Entity out of range."{}});}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         mSignatures[entity].reset();}
+\DoxyCodeLine{36         mAvailableEntities.push(entity);}
+\DoxyCodeLine{37         -\/-\/mLivingEntityCount;}
+\DoxyCodeLine{38     \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{keywordtype}{void} SetSignature(Entity entity, Signature signature)}
+\DoxyCodeLine{41     \{}
+\DoxyCodeLine{42         assert(entity < MAX\_ENTITIES \&\& \textcolor{stringliteral}{"{}Entity out of range."{}});}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44         mSignatures[entity] = signature;}
+\DoxyCodeLine{45     \}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     Signature GetSignature(Entity entity)}
+\DoxyCodeLine{48     \{}
+\DoxyCodeLine{49         assert(entity < MAX\_ENTITIES \&\& \textcolor{stringliteral}{"{}Entity out of range."{}});}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         \textcolor{keywordflow}{return} mSignatures[entity];}
+\DoxyCodeLine{52     \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keyword}{private}:}
+\DoxyCodeLine{55     std::queue<Entity> mAvailableEntities\{\};}
+\DoxyCodeLine{56     std::array<Signature, MAX\_ENTITIES> mSignatures\{\};}
+\DoxyCodeLine{57     uint32\_t mLivingEntityCount\{\};}
+\DoxyCodeLine{58 \};}
+
+\end{DoxyCode}

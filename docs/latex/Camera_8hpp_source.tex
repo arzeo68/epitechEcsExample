@@ -1,0 +1,42 @@
+\hypertarget{Camera_8hpp_source}{}\doxysection{Camera.\+hpp}
+\label{Camera_8hpp_source}\index{Source/Components/Camera.hpp@{Source/Components/Camera.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}Math/Mat44.hpp"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{struct }\mbox{\hyperlink{structCamera}{Camera}}}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11     \mbox{\hyperlink{classMat44}{Mat44}} projectionTransform;}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keyword}{static} \mbox{\hyperlink{classMat44}{Mat44}} MakeProjectionTransform(\textcolor{keywordtype}{float} fov, \textcolor{keywordtype}{float} nearClip, \textcolor{keywordtype}{float} farClip, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} viewWidth, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} viewHeight)}
+\DoxyCodeLine{15     \{}
+\DoxyCodeLine{16         \textcolor{keywordtype}{float} zClipBias0 =}
+\DoxyCodeLine{17             (farClip + nearClip)}
+\DoxyCodeLine{18             / (farClip -\/ nearClip);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20         \textcolor{keywordtype}{float} zClipBias1 =}
+\DoxyCodeLine{21             (2.0f * farClip * nearClip)}
+\DoxyCodeLine{22             / (farClip -\/ nearClip);}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         \textcolor{keywordtype}{float} zoomX = 1.0f / tanf((fov / 2.0f) * (M\_PI / 180.0f));}
+\DoxyCodeLine{25         \textcolor{keywordtype}{float} zoomY = (zoomX * \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(viewWidth)) / \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(viewHeight);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27         \mbox{\hyperlink{classMat44}{Mat44}} transform;}
+\DoxyCodeLine{28         transform.m[0][0] = zoomX;}
+\DoxyCodeLine{29         transform.m[1][1] = zoomY;}
+\DoxyCodeLine{30         transform.m[2][2] = -\/zClipBias0;}
+\DoxyCodeLine{31         transform.m[3][2] = -\/1;}
+\DoxyCodeLine{32         transform.m[2][3] = -\/zClipBias1;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34         \textcolor{keywordflow}{return} transform;}
+\DoxyCodeLine{35     \}}
+\DoxyCodeLine{36 \};}
+
+\end{DoxyCode}

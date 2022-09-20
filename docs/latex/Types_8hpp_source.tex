@@ -1,0 +1,68 @@
+\hypertarget{Types_8hpp_source}{}\doxysection{Types.\+hpp}
+\label{Types_8hpp_source}\index{Source/Core/Types.hpp@{Source/Core/Types.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <bitset>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <cstdint>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{comment}{// Source: https://gist.github.com/Lee-\/R/3839813}}
+\DoxyCodeLine{8 \textcolor{keyword}{constexpr} std::uint32\_t fnv1a\_32(\textcolor{keywordtype}{char} \textcolor{keyword}{const}* s, std::size\_t count)}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     \textcolor{keywordflow}{return} ((count ? fnv1a\_32(s, count -\/ 1) : 2166136261u) \string^ s[count]) * 16777619u; \textcolor{comment}{// NOLINT (hicpp-\/signed-\/bitwise)}}
+\DoxyCodeLine{11 \}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{constexpr} std::uint32\_t \textcolor{keyword}{operator} \textcolor{stringliteral}{"{}"{}} \_hash(\textcolor{keywordtype}{char} \textcolor{keyword}{const}* s, std::size\_t count)}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15     \textcolor{keywordflow}{return} fnv1a\_32(s, count);}
+\DoxyCodeLine{16 \}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{// ECS}}
+\DoxyCodeLine{20 \textcolor{keyword}{using} Entity = std::uint32\_t;}
+\DoxyCodeLine{21 \textcolor{keyword}{const} Entity MAX\_ENTITIES = 5000;}
+\DoxyCodeLine{22 \textcolor{keyword}{using} ComponentType = std::uint8\_t;}
+\DoxyCodeLine{23 \textcolor{keyword}{const} ComponentType MAX\_COMPONENTS = 32;}
+\DoxyCodeLine{24 \textcolor{keyword}{using} Signature = std::bitset<MAX\_COMPONENTS>;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{comment}{// Input}}
+\DoxyCodeLine{28 \textcolor{keyword}{enum class} InputButtons}
+\DoxyCodeLine{29 \{}
+\DoxyCodeLine{30     W,}
+\DoxyCodeLine{31     A,}
+\DoxyCodeLine{32     S,}
+\DoxyCodeLine{33     D,}
+\DoxyCodeLine{34     Q,}
+\DoxyCodeLine{35     E}
+\DoxyCodeLine{36 \};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{comment}{// Events}}
+\DoxyCodeLine{40 \textcolor{keyword}{using} EventId = std::uint32\_t;}
+\DoxyCodeLine{41 \textcolor{keyword}{using} ParamId = std::uint32\_t;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define METHOD\_LISTENER(EventType, Listener) EventType, std::bind(\&Listener, this, std::placeholders::\_1)}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define FUNCTION\_LISTENER(EventType, Listener) EventType, std::bind(\&Listener, std::placeholders::\_1)}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{comment}{// TODO: Make these easier to define and use (macro?)}}
+\DoxyCodeLine{47 \textcolor{comment}{// TODO: Add some kind of enforcement/automation that a SetParam type and a GetParam type match}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{keyword}{namespace }Events::Window \{}
+\DoxyCodeLine{50 \textcolor{keyword}{const} EventId QUIT = \textcolor{stringliteral}{"{}Events::Window::QUIT"{}}\_hash;}
+\DoxyCodeLine{51 \textcolor{keyword}{const} EventId RESIZED = \textcolor{stringliteral}{"{}Events::Window::RESIZED"{}}\_hash;}
+\DoxyCodeLine{52 \textcolor{keyword}{const} EventId INPUT = \textcolor{stringliteral}{"{}Events::Window::INPUT"{}}\_hash;}
+\DoxyCodeLine{53 \}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{keyword}{namespace }Events::Window::Input \{}
+\DoxyCodeLine{56 \textcolor{keyword}{const} ParamId INPUT = \textcolor{stringliteral}{"{}Events::Window::Input::INPUT"{}}\_hash;}
+\DoxyCodeLine{57 \}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{keyword}{namespace }Events::Window::Resized \{}
+\DoxyCodeLine{60 \textcolor{keyword}{const} ParamId WIDTH = \textcolor{stringliteral}{"{}Events::Window::Resized::WIDTH"{}}\_hash;}
+\DoxyCodeLine{61 \textcolor{keyword}{const} ParamId HEIGHT = \textcolor{stringliteral}{"{}Events::Window::Resized::HEIGHT"{}}\_hash;}
+\DoxyCodeLine{62 \}}
+
+\end{DoxyCode}

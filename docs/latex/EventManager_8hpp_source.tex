@@ -1,0 +1,46 @@
+\hypertarget{EventManager_8hpp_source}{}\doxysection{Event\+Manager.\+hpp}
+\label{EventManager_8hpp_source}\index{Source/Core/EventManager.hpp@{Source/Core/EventManager.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}Event.hpp"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Types.hpp"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{classEventManager}{EventManager}}}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12 \textcolor{keyword}{public}:}
+\DoxyCodeLine{13     \textcolor{keywordtype}{void} AddListener(EventId eventId, std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{classEvent}{Event}}\&)> \textcolor{keyword}{const}\& listener)}
+\DoxyCodeLine{14     \{}
+\DoxyCodeLine{15         listeners[eventId].push\_back(listener);}
+\DoxyCodeLine{16     \}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} SendEvent(\mbox{\hyperlink{classEvent}{Event}}\& event)}
+\DoxyCodeLine{19     \{}
+\DoxyCodeLine{20         uint32\_t type = \textcolor{keyword}{event}.GetType();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const}\& listener : listeners[type])}
+\DoxyCodeLine{23         \{}
+\DoxyCodeLine{24             listener(event);}
+\DoxyCodeLine{25         \}}
+\DoxyCodeLine{26     \}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} SendEvent(EventId eventId)}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30         \mbox{\hyperlink{classEvent}{Event}} event(eventId);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const}\& listener : listeners[eventId])}
+\DoxyCodeLine{33         \{}
+\DoxyCodeLine{34             listener(event);}
+\DoxyCodeLine{35         \}}
+\DoxyCodeLine{36     \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{private}:}
+\DoxyCodeLine{39     std::unordered\_map<EventId, std::list<std::function<void(\mbox{\hyperlink{classEvent}{Event}}\&)>>> listeners;}
+\DoxyCodeLine{40 \};}
+
+\end{DoxyCode}
