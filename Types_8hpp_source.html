@@ -76,63 +76,53 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;bitset&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// Source: https://gist.github.com/Lee-R/3839813</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;constexpr std::uint32_t fnv1a_32(<span class="keywordtype">char</span> <span class="keyword">const</span>* s, std::size_t count)</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordflow">return</span> ((count ? fnv1a_32(s, count - 1) : 2166136261u) ^ s[count]) * 16777619u; <span class="comment">// NOLINT (hicpp-signed-bitwise)</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;constexpr std::uint32_t <span class="keyword">operator</span> <span class="stringliteral">&quot;&quot;</span> _hash(<span class="keywordtype">char</span> <span class="keyword">const</span>* s, std::size_t count)</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">return</span> fnv1a_32(s, count);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// ECS</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> Entity = std::uint32_t;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">const</span> Entity MAX_ENTITIES = 5000;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> ComponentType = std::uint8_t;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">const</span> ComponentType MAX_COMPONENTS = 32;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> Signature = std::bitset&lt;MAX_COMPONENTS&gt;;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Source: https://gist.github.com/Lee-R/3839813</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;constexpr std::uint32_t fnv1a_32(<span class="keywordtype">char</span> <span class="keyword">const</span> *s, std::size_t count) {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <span class="keywordflow">return</span> ((count ? fnv1a_32(s, count - 1) : 2166136261u) ^ s[count]) *</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;         16777619u;  <span class="comment">// NOLINT (hicpp-signed-bitwise)</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;constexpr std::uint32_t <span class="keyword">operator</span><span class="stringliteral">&quot;&quot;</span> _hash(<span class="keywordtype">char</span> <span class="keyword">const</span> *s, std::size_t count) {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keywordflow">return</span> fnv1a_32(s, count);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">// ECS</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> Entity = std::uint32_t;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">const</span> Entity MAX_ENTITIES = 5000;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> ComponentType = std::uint8_t;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">const</span> ComponentType MAX_COMPONENTS = 32;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> Signature = std::bitset&lt;MAX_COMPONENTS&gt;;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Input</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">enum class</span> InputButtons { W, A, S, D, Q, E };</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// Input</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">enum class</span> InputButtons</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    W,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    A,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    S,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    D,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    Q,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    E</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// Events</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> EventId = std::uint32_t;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> ParamId = std::uint32_t;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define METHOD_LISTENER(EventType, Listener) \</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">  EventType, std::bind(&amp;Listener, this, std::placeholders::_1)</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#define FUNCTION_LISTENER(EventType, Listener) \</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">  EventType, std::bind(&amp;Listener, std::placeholders::_1)</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// TODO: Make these easier to define and use (macro?)</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">// TODO: Add some kind of enforcement/automation that a SetParam type and a</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">// GetParam type match</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// Events</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">using</span> EventId = std::uint32_t;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">using</span> ParamId = std::uint32_t;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define METHOD_LISTENER(EventType, Listener) EventType, std::bind(&amp;Listener, this, std::placeholders::_1)</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define FUNCTION_LISTENER(EventType, Listener) EventType, std::bind(&amp;Listener, std::placeholders::_1)</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">// TODO: Make these easier to define and use (macro?)</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">// TODO: Add some kind of enforcement/automation that a SetParam type and a GetParam type match</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span>Events::Window {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">const</span> EventId QUIT = <span class="stringliteral">&quot;Events::Window::QUIT&quot;</span>_hash;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">const</span> EventId RESIZED = <span class="stringliteral">&quot;Events::Window::RESIZED&quot;</span>_hash;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">const</span> EventId INPUT = <span class="stringliteral">&quot;Events::Window::INPUT&quot;</span>_hash;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}  <span class="comment">// namespace Events::Window</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">namespace </span>Events::Window::Input {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">const</span> ParamId INPUT = <span class="stringliteral">&quot;Events::Window::Input::INPUT&quot;</span>_hash;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">namespace </span>Events::Window {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">const</span> EventId QUIT = <span class="stringliteral">&quot;Events::Window::QUIT&quot;</span>_hash;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">const</span> EventId RESIZED = <span class="stringliteral">&quot;Events::Window::RESIZED&quot;</span>_hash;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">const</span> EventId INPUT = <span class="stringliteral">&quot;Events::Window::INPUT&quot;</span>_hash;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">namespace </span>Events::Window::Input {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">const</span> ParamId INPUT = <span class="stringliteral">&quot;Events::Window::Input::INPUT&quot;</span>_hash;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">namespace </span>Events::Window::Resized {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">const</span> ParamId WIDTH = <span class="stringliteral">&quot;Events::Window::Resized::WIDTH&quot;</span>_hash;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">const</span> ParamId HEIGHT = <span class="stringliteral">&quot;Events::Window::Resized::HEIGHT&quot;</span>_hash;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">namespace </span>Events::Window::Resized {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">const</span> ParamId WIDTH = <span class="stringliteral">&quot;Events::Window::Resized::WIDTH&quot;</span>_hash;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">const</span> ParamId HEIGHT = <span class="stringliteral">&quot;Events::Window::Resized::HEIGHT&quot;</span>_hash;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}  <span class="comment">// namespace Events::Window::Resized</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

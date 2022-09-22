@@ -73,36 +73,35 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;glad/glad.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;GLFW/glfw3.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;bitset&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;GLFW/glfw3.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;glad/glad.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;bitset&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classWindowManager.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classWindowManager.html">WindowManager</a></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWindowManager.html#a1568b5b2635fb6b631991f22fc05da92">Init</a>(</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        std::string <span class="keyword">const</span>&amp; windowTitle, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> windowWidth, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> windowHeight,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> windowPositionX, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> windowPositionY);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWindowManager.html#ab3fe67e0942bab78c79da066cf89d2eb">Update</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWindowManager.html#a69c6ffac1b9e7903d5853f249f6e0684">ProcessEvents</a>();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWindowManager.html#a7008e91f192d98cb1c9d818c9f7afdca">Shutdown</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    GLFWwindow* mWindow;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::bitset&lt;8&gt; mButtons;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classWindowManager.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classWindowManager.html">WindowManager</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classWindowManager.html#a1568b5b2635fb6b631991f22fc05da92">Init</a>(std::string <span class="keyword">const</span> &amp;windowTitle, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> windowWidth,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> windowHeight, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> windowPositionX,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> windowPositionY);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classWindowManager.html#ab3fe67e0942bab78c79da066cf89d2eb">Update</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classWindowManager.html#a69c6ffac1b9e7903d5853f249f6e0684">ProcessEvents</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classWindowManager.html#a7008e91f192d98cb1c9d818c9f7afdca">Shutdown</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  GLFWwindow *mWindow;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  std::bitset&lt;8&gt; mButtons;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassWindowManager_html_ab3fe67e0942bab78c79da066cf89d2eb"><div class="ttname"><a href="classWindowManager.html#ab3fe67e0942bab78c79da066cf89d2eb">WindowManager::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> WindowManager.cpp:49</div></div>
-<div class="ttc" id="aclassWindowManager_html_a69c6ffac1b9e7903d5853f249f6e0684"><div class="ttname"><a href="classWindowManager.html#a69c6ffac1b9e7903d5853f249f6e0684">WindowManager::ProcessEvents</a></div><div class="ttdeci">void ProcessEvents()</div><div class="ttdef"><b>Definition:</b> WindowManager.cpp:66</div></div>
+<div class="ttc" id="aclassWindowManager_html_a69c6ffac1b9e7903d5853f249f6e0684"><div class="ttname"><a href="classWindowManager.html#a69c6ffac1b9e7903d5853f249f6e0684">WindowManager::ProcessEvents</a></div><div class="ttdeci">void ProcessEvents()</div><div class="ttdef"><b>Definition:</b> WindowManager.cpp:62</div></div>
 <div class="ttc" id="aclassWindowManager_html_a1568b5b2635fb6b631991f22fc05da92"><div class="ttname"><a href="classWindowManager.html#a1568b5b2635fb6b631991f22fc05da92">WindowManager::Init</a></div><div class="ttdeci">void Init(std::string const &amp;windowTitle, unsigned int windowWidth, unsigned int windowHeight, unsigned int windowPositionX, unsigned int windowPositionY)</div><div class="ttdef"><b>Definition:</b> WindowManager.cpp:21</div></div>
 <div class="ttc" id="aclassWindowManager_html"><div class="ttname"><a href="classWindowManager.html">WindowManager</a></div><div class="ttdef"><b>Definition:</b> WindowManager.hpp:12</div></div>
-<div class="ttc" id="aclassWindowManager_html_a7008e91f192d98cb1c9d818c9f7afdca"><div class="ttname"><a href="classWindowManager.html#a7008e91f192d98cb1c9d818c9f7afdca">WindowManager::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdef"><b>Definition:</b> WindowManager.cpp:57</div></div>
+<div class="ttc" id="aclassWindowManager_html_a7008e91f192d98cb1c9d818c9f7afdca"><div class="ttname"><a href="classWindowManager.html#a7008e91f192d98cb1c9d818c9f7afdca">WindowManager::Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdef"><b>Definition:</b> WindowManager.cpp:54</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

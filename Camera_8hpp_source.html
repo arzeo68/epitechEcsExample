@@ -73,42 +73,36 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Math/Mat44.hpp&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Math/Mat44.hpp&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structCamera.html">    9</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structCamera.html">Camera</a></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classMat44.html">Mat44</a> projectionTransform;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">static</span> <a class="code" href="classMat44.html">Mat44</a> MakeProjectionTransform(<span class="keywordtype">float</span> fov, <span class="keywordtype">float</span> nearClip, <span class="keywordtype">float</span> farClip, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> viewWidth, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> viewHeight)</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">float</span> zClipBias0 =</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            (farClip + nearClip)</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            / (farClip - nearClip);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">float</span> zClipBias1 =</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            (2.0f * farClip * nearClip)</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            / (farClip - nearClip);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">float</span> zoomX = 1.0f / tanf((fov / 2.0f) * (M_PI / 180.0f));</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">float</span> zoomY = (zoomX * <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(viewWidth)) / <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(viewHeight);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="classMat44.html">Mat44</a> transform;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        transform.m[0][0] = zoomX;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        transform.m[1][1] = zoomY;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        transform.m[2][2] = -zClipBias0;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        transform.m[3][2] = -1;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        transform.m[2][3] = -zClipBias1;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> transform;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structCamera.html">    7</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structCamera.html">Camera</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <a class="code" href="classMat44.html">Mat44</a> projectionTransform;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keyword">static</span> <a class="code" href="classMat44.html">Mat44</a> MakeProjectionTransform(<span class="keywordtype">float</span> fov, <span class="keywordtype">float</span> nearClip, <span class="keywordtype">float</span> farClip,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                                       <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> viewWidth,</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                                       <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> viewHeight) {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">float</span> zClipBias0 = (farClip + nearClip) / (farClip - nearClip);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">float</span> zClipBias1 = (2.0f * farClip * nearClip) / (farClip - nearClip);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">float</span> zoomX = 1.0f / tanf((fov / 2.0f) * (M_PI / 180.0f));</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">float</span> zoomY = (zoomX * <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(viewWidth)) /</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                  <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(viewHeight);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classMat44.html">Mat44</a> transform;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    transform.m[0][0] = zoomX;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    transform.m[1][1] = zoomY;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    transform.m[2][2] = -zClipBias0;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    transform.m[3][2] = -1;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    transform.m[2][3] = -zClipBias1;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span> transform;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructCamera_html"><div class="ttname"><a href="structCamera.html">Camera</a></div><div class="ttdef"><b>Definition:</b> Camera.hpp:9</div></div>
+<div class="ttc" id="astructCamera_html"><div class="ttname"><a href="structCamera.html">Camera</a></div><div class="ttdef"><b>Definition:</b> Camera.hpp:7</div></div>
 <div class="ttc" id="aclassMat44_html"><div class="ttname"><a href="classMat44.html">Mat44</a></div><div class="ttdef"><b>Definition:</b> Mat44.hpp:5</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
