@@ -1,24 +1,24 @@
-name: cpp-linter
+name: Run clang-format Linter
 
-on: 
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
-  cpp-linter:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: cpp-linter/cpp-linter-action@v2
-        id: linter
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          style: llvm
 
-      - name: Fail fast?!
-        if: steps.linter.outputs.checks-failed > 0
-        run: echo "Some files failed the linting checks!"
-        # for actual deployment
-        # run: exit 1
+    steps:
+    - uses: actions/checkout@v2
+    - uses: DoozyX/clang-format-lint-action@v0.14
+      with:
+        source: 'Source'
+        exclude: './lib'
+        extensions: 'hpp,cpp,c'
+        clangFormatVersion: 14
+        inplace: True
+    - uses: EndBug/add-and-commit@v4
+      with:
+        author_name: Clang Robot
+        author_email: robot@example.com
+        message: 'Committing clang-format changes'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
