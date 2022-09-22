@@ -8,9 +8,8 @@
 #include "Types.hpp"
 
 class SystemManager {
- public:
-  template <typename T>
-  std::shared_ptr<T> RegisterSystem() {
+public:
+  template <typename T> std::shared_ptr<T> RegisterSystem() {
     const char *typeName = typeid(T).name();
 
     assert(mSystems.find(typeName) == mSystems.end() &&
@@ -21,8 +20,7 @@ class SystemManager {
     return system;
   }
 
-  template <typename T>
-  void SetSignature(Signature signature) {
+  template <typename T> void SetSignature(Signature signature) {
     const char *typeName = typeid(T).name();
 
     assert(mSystems.find(typeName) != mSystems.end() &&
@@ -53,7 +51,7 @@ class SystemManager {
     }
   }
 
- private:
+private:
   std::unordered_map<const char *, Signature> mSignatures{};
   std::unordered_map<const char *, std::shared_ptr<System>> mSystems{};
 };

@@ -3,7 +3,7 @@
 #include "Vec4.hpp"
 
 class Mat44 {
- public:
+public:
   Mat44() {
     //@formatter:off
     m[0][0] = 1.0f;

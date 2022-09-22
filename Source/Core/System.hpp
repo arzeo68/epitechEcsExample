@@ -5,6 +5,6 @@
 #include "Types.hpp"
 
 class System {
- public:
+public:
   std::set<Entity> mEntities;
 };

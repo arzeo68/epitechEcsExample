@@ -7,7 +7,7 @@
 #include "Types.hpp"
 
 class EntityManager {
- public:
+public:
   EntityManager() {
     for (Entity entity = 0; entity < MAX_ENTITIES; ++entity) {
       mAvailableEntities.push(entity);
@@ -45,7 +45,7 @@ class EntityManager {
     return mSignatures[entity];
   }
 
- private:
+private:
   std::queue<Entity> mAvailableEntities{};
   std::array<Signature, MAX_ENTITIES> mSignatures{};
   uint32_t mLivingEntityCount{};

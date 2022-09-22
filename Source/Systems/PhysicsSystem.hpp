@@ -3,7 +3,7 @@
 #include "Core/System.hpp"
 
 class PhysicsSystem : public System {
- public:
+public:
   void Init();
 
   void Update(float dt);

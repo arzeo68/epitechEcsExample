@@ -10,7 +10,7 @@
  * Window Manager
  */
 class WindowManager {
- public:
+public:
   void Init(std::string const &windowTitle, unsigned int windowWidth,
             unsigned int windowHeight, unsigned int windowPositionX,
             unsigned int windowPositionY);
@@ -21,7 +21,7 @@ class WindowManager {
 
   void Shutdown();
 
- private:
+private:
   GLFWwindow *mWindow;
 
   std::bitset<8> mButtons;

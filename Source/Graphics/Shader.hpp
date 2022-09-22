@@ -8,7 +8,7 @@ class Mat44;
 class Vec3;
 
 class Shader {
- public:
+public:
   Shader(std::string const &vertexPath, std::string const &fragmentPath);
 
   void Activate();
@@ -24,6 +24,6 @@ class Shader {
     }
   }
 
- private:
+private:
   GLuint mId;
 };

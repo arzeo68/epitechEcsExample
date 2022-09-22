@@ -8,12 +8,12 @@
 class Event;
 
 class RenderSystem : public System {
- public:
+public:
   void Init();
 
   void Update(float dt);
 
- private:
+private:
   void WindowSizeListener(Event &event);
 
   std::unique_ptr<Shader> shader;

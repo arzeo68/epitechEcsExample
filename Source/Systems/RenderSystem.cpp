@@ -87,7 +87,7 @@ void RenderSystem::Init() {
 void RenderSystem::Update(float dt) {
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT |
-          GL_DEPTH_BUFFER_BIT);  // NOLINT (hicpp-signed-bitwise)
+          GL_DEPTH_BUFFER_BIT); // NOLINT (hicpp-signed-bitwise)
 
   shader->Activate();
   glBindVertexArray(mVao);

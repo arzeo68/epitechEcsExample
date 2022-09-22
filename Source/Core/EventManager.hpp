@@ -8,7 +8,7 @@
 #include "Types.hpp"
 
 class EventManager {
- public:
+public:
   void AddListener(EventId eventId,
                    std::function<void(Event &)> const &listener) {
     listeners[eventId].push_back(listener);
@@ -30,7 +30,7 @@ class EventManager {
     }
   }
 
- private:
+private:
   std::unordered_map<EventId, std::list<std::function<void(Event &)>>>
       listeners;
 };
