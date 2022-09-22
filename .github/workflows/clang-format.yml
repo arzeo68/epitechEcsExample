@@ -9,7 +9,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: format
+      - name: format1
         run: pwd
+      - name: format2
         run: ls
+      - name: format3
         run: clang-format --style=llvm --sort-includes Source/**/*.cpp Source/**/*.hpp --Werror -i
