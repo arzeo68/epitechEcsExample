@@ -10,4 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: format
+        run: pwd
+        run: ls
         run: clang-format --style=llvm --sort-includes Source/**/*.cpp Source/**/*.hpp --Werror -i
