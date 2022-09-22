@@ -164,7 +164,6 @@ int main()
 		dt = std::chrono::duration<float, std::chrono::seconds::period>(stopTime - startTime).count();
 	}
 
-
 	windowManager.Shutdown();
 
 	return 0;
