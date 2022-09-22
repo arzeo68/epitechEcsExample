@@ -1,11 +1,10 @@
 #pragma once
 
-#include "Types.hpp"
 #include <set>
 
+#include "Types.hpp"
 
-class System
-{
-public:
-	std::set<Entity> mEntities;
+class System {
+ public:
+  std::set<Entity> mEntities;
 };
