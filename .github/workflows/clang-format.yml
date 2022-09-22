@@ -12,6 +12,6 @@ jobs:
       - name: format1
         run: pwd
       - name: format2
-        run: ls
+        run: ls -la
       - name: format3
         run: clang-format --style=llvm --sort-includes Source/**/*.cpp Source/**/*.hpp --Werror -i
